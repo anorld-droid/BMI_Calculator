@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Patrice Mulindi</string>
+    <string name="home_fg_title">Add BMI Details</string>
+    <string name="results_fg_title">BMI Details</string>
+    <string name="personal_details">personal_details</string>
+    <string name="name">Name</string>
+    <string name="calculate">calculate</string>
+    <string name="weight">Weight</string>
+    <string name="gender">Gender</string>
+    <string name="height">Height</string>
+    <string name="calculate_btn">Calculate</string>
+    <string name="share">Share</string>
+    <string name="rate">Rate</string>
+    <string name="calculate_your_body_mass_index">Calculate Your Body Mass Index</string>
+    <string name="enter_personal_details">Enter Personal Details</string>
+    <string name="interstitial_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="native_unit_id">ca-app-pub-3940256099942544/2247696110</string>
+</resources>

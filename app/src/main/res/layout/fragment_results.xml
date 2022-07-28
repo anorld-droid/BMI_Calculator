@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
+    tools:context=".views.ResultsFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/results_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/results_fg_title"
+            app:titleCentered="true"
+            app:titleTextAppearance="@font/raleway"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_24"
+            android:background="@drawable/statusbar_gradient_bg_color"
+            app:titleTextColor="@color/white"
+            />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/card_gradient"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2">
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:dividerColor="@color/divider_color" />
+
+
+        <TextView
+            android:id="@+id/BMI_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/divider_color"
+            android:textSize="24sp"
+            android:textStyle="normal"
+            android:text="BODY MASS INDEX" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dividerColor="@color/divider_color" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="88dp"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_marginTop="60dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/BMI_result_whole_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|bottom"
+                android:fontFamily="@font/poppins"
+                android:text="18"
+                android:textColor="@color/white"
+                android:textSize="80sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:fontFamily="@font/poppins"
+                android:text="."
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/BMI_result_rem_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:fontFamily="@font/poppins"
+                android:text="64"
+                android:textColor="@color/white"
+                android:textSize="48sp"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginEnd="88dp"
+            app:dividerColor="@color/white" />
+
+        <TextView
+            android:id="@+id/txt_vw_name_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="56dp"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="HELLO OLIVIA, YOU ARE NORMAL" />
+
+        <TextView
+            android:id="@+id/txt_vw_BMI_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            android:text="Normal BMI range: 18.5kg/m2 - 25kg/m2" />
+
+        <TextView
+            android:id="@+id/txt_vw_ponderal_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            tools:text="Ponderal Index: 10kg/m3 " />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/share_btn"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_horizontal"
+                android:fontFamily="@font/raleway"
+                android:text="@string/share"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:theme="@style/Theme.MaterialComponents.Light"
+                app:cornerRadius="8dp"
+                app:icon="@drawable/share"
+                app:iconGravity="textStart"
+                app:iconSize="24dp"
+                app:iconPadding="5dp"
+                app:iconTint="@null"
+                app:strokeColor="@color/white" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/rate_btn"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_horizontal"
+                android:layout_marginStart="40dp"
+                android:fontFamily="@font/raleway"
+                android:text="@string/rate"
+                android:textSize="12sp"
+                android:textAllCaps="false"
+                android:paddingStart="18dp"
+                app:iconPadding="5dp"
+                android:paddingEnd="18dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:theme="@style/Theme.MaterialComponents.Light"
+                app:cornerRadius="8dp"
+                app:icon="@drawable/star"
+                app:iconGravity="textStart"
+                app:iconSize="24dp"
+                app:iconTint="@null"
+                app:strokeColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/native_ad"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:elevation="12dp"
+        android:background="@drawable/rounded_corner_edit_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+</androidx.constraintlayout.widget.ConstraintLayout>
