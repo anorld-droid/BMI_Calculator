@@ -15,4 +15,6 @@
     <string name="enter_personal_details">Enter Personal Details</string>
     <string name="interstitial_unit_id">ca-app-pub-3940256099942544/1033173712</string>
     <string name="native_unit_id">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="dot">.</string>
+    <string name="body_mass_index">BODY MASS INDEX</string>
 </resources>
