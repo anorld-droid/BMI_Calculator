@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.anorlddroid.patricemulindi.R
 import com.anorlddroid.patricemulindi.databinding.FragmentResultsBinding
@@ -70,6 +72,7 @@ class ResultsFragment : Fragment() {
             populateNativeAdView(nativeAd, adView)
             binding.nativeAd.removeAllViews()
             binding.nativeAd.elevation = 12F
+            binding.nativeAd.background = ContextCompat.getDrawable(requireContext(), R.drawable.frame_layout_bg)
             binding.nativeAd.addView(adView)
         }
         val adLoader = adBuilder.withAdListener(object : AdListener() {
@@ -91,7 +94,7 @@ class ResultsFragment : Fragment() {
                 toolbar
             )
             toolbar.setNavigationOnClickListener {
-                activity?.onBackPressed()
+               findNavController().navigate(R.id.action_navigation_results_to_navigation_home)
             }
         })
 

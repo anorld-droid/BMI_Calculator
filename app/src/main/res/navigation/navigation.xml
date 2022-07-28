@@ -28,5 +28,14 @@
         <argument
             android:name="results"
             app:argType="com.anorlddroid.patricemulindi.model.Results" />
+        <action
+            android:id="@+id/action_navigation_results_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
