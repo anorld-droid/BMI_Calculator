@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 
 import com.anorlddroid.patricemulindi.R
@@ -48,9 +47,8 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         activity?.lifecycle?.addObserver(MainActivityObserver{
             val toolbar: Toolbar = binding.homeAppBar
             (activity as AppCompatActivity).setSupportActionBar(
@@ -85,10 +83,7 @@ class HomeFragment : Fragment() {
                 gender = genderList[newValue]
             }
         })
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         MobileAds.initialize(requireContext())
         adRequest = AdRequest.Builder().build()
         InterstitialAd.load(requireContext(), getString(R.string.interstitial_unit_id), adRequest, object: InterstitialAdLoadCallback(){

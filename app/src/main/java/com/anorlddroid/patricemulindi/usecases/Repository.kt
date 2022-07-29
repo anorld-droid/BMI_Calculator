@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.net.Uri
 import android.os.Environment
 import android.util.Log
 import android.view.View
@@ -18,7 +17,6 @@ import com.anorlddroid.patricemulindi.model.Results
 import java.io.File
 import java.io.FileOutputStream
 import java.util.*
-import java.util.jar.Manifest
 import javax.inject.Inject
 
 interface BMIRepository {
@@ -32,8 +30,8 @@ class BMIRepositoryImpl  @Inject constructor(): BMIRepository{
     override fun calculateBMIAndPonderalIndex(personalBMIDetails: Details): Results {
         val bmi: Double = personalBMIDetails.weight / ((personalBMIDetails.height * personalBMIDetails.height) / 10000)
         val ponderal : Double = personalBMIDetails.weight / ((personalBMIDetails.height * personalBMIDetails.height * personalBMIDetails.height) / 1000000)
-        var category = ""
-        var categoryInfo = ""
+        val category: String
+        val categoryInfo: String
         if (bmi < 18.5) {
             categoryInfo = "Underweight BMI range: Less than 18.5kg/m2"
             category = "Underweight"
@@ -85,7 +83,9 @@ class BMIRepositoryImpl  @Inject constructor(): BMIRepository{
             startActivity(activity, Intent.createChooser(shareIntent, "Share Image"), null)
 
         }catch (ex: Exception){
-            Log.e("Screenshot", "Exception: $ex ")
+            if (BuildConfig.DEBUG){
+                Log.e("Screenshot", "Exception: $ex ")
+            }
         }
     }
 

@@ -2,6 +2,7 @@ package com.anorlddroid.patricemulindi.views
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.anorlddroid.patricemulindi.BuildConfig
 import com.anorlddroid.patricemulindi.R
 import com.anorlddroid.patricemulindi.databinding.FragmentResultsBinding
 import com.anorlddroid.patricemulindi.domain.MainActivityObserver
@@ -81,10 +82,10 @@ class ResultsFragment : Fragment() {
                     """
            domain: ${loadAdError.domain}, code: ${loadAdError.code}, message: ${loadAdError.message}
           """"
-                Toast.makeText(
-                    requireContext(), "Failed to load native ad with error $error",
-                    Toast.LENGTH_SHORT
-                ).show()
+                if (BuildConfig.DEBUG){
+                    Log.d( "ADLOADER","Failed to load native ad with error $error"
+                    )
+                }
             }
         }).build()
         adLoader.loadAd(AdRequest.Builder().build())
