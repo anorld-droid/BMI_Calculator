@@ -10,9 +10,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        >
-        <include layout="@layout/custom_toolbar"/>
+        android:layout_gravity="top">
+        <include layout="@layout/custom_toolbar" />
     </LinearLayout>
 
 
@@ -21,11 +20,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="@dimen/spacing_xxxxlarge"
         android:fontFamily="@font/raleway"
         android:text="@string/enter_personal_details"
         android:textColor="@color/text_color"
-        android:textSize="32sp"
+        android:textSize="@dimen/text_size_large"
         android:textStyle="normal" />
 
     <EditText
@@ -33,20 +32,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="@dimen/spacing_xlarge"
+        android:layout_marginTop="@dimen/spacing_xlarge"
+        android:layout_marginEnd="@dimen/spacing_xlarge"
         android:background="@drawable/rounded_corner_edit_text"
         android:fontFamily="@font/raleway"
         android:hint="@string/name"
         android:inputType="textPersonName"
-        android:paddingStart="20dp"
-        android:paddingTop="16dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="16dp"
+        android:paddingStart="@dimen/spacing_mlarge"
+        android:paddingTop="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_mlarge"
+        android:paddingBottom="@dimen/spacing_large"
         android:textColor="@color/faint_txt_color"
         android:textColorHint="@color/faint_txt_color"
-        android:textSize="22sp"
+        android:textSize="@dimen/text_size_small"
         android:textStyle="normal" />
 
 
@@ -55,16 +54,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="@dimen/spacing_xmlarge"
         android:fontFamily="@font/poppins"
         android:text="@string/calculate_your_body_mass_index"
         android:textColor="@color/faint_txt_color"
-        android:textSize="22sp" />
+        android:textSize="@dimen/text_size_small" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/spacing_xlarge"
         android:orientation="horizontal">
 
         <TextView
@@ -72,11 +71,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center_horizontal"
-            android:layout_marginStart="56dp"
+            android:layout_marginStart="@dimen/spacing_xxxlarge"
             android:fontFamily="@font/poppins"
             android:text="@string/weight"
             android:textColor="@color/num_picker_header_colors"
-            android:textSize="20sp"
+            android:textSize="@dimen/text_size_small"
             android:textStyle="bold" />
 
 
@@ -84,13 +83,12 @@
             android:id="@+id/height_txt_vw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-
             android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/spacing_xxxlarge"
             android:fontFamily="@font/poppins"
             android:text="@string/gender"
             android:textColor="@color/num_picker_header_colors"
-            android:textSize="20sp"
+            android:textSize="@dimen/text_size_small"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/gender_txt_vw"
             app:layout_constraintEnd_toEndOf="@+id/numberpickers"
@@ -101,12 +99,12 @@
             android:id="@+id/gender_txt_vw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
             android:layout_gravity="end|center_horizontal"
+            android:layout_marginStart="@dimen/spacing_xxxlarge"
             android:fontFamily="@font/poppins"
             android:text="@string/height"
             android:textColor="@color/num_picker_header_colors"
-            android:textSize="20sp"
+            android:textSize="@dimen/text_size_small"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/weight_txt_vw"
             app:layout_constraintEnd_toStartOf="@+id/height_txt_vw"
@@ -117,15 +115,14 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/numberpickers"
-        android:layout_width="389dp"
+        android:layout_width="match_parent"
         android:layout_height="198dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="@dimen/spacing_middle"
+        android:layout_marginEnd="@dimen/spacing_middle"
         android:theme="@style/Theme.MaterialComponents.Light"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="0dp"
-        app:cardElevation="10dp"
-        app:cardMaxElevation="12dp"
+        app:cardElevation="@dimen/spacing_middle"
+        app:cardMaxElevation="@dimen/spacing_middle"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -137,7 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:layout_marginStart="20dp">
+            android:layout_marginStart="@dimen/spacing_mlarge">
 
             <NumberPicker
                 android:id="@+id/numberPicker_weight"
@@ -151,12 +148,12 @@
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|center_horizontal"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/spacing_mlarge"
                 android:foregroundGravity="center"
                 app:dividerColor="@color/text_color"
-                app:dividerInsetEnd="16dp"
-                app:dividerInsetStart="16dp"
-                app:dividerThickness="4dp" />
+                app:dividerInsetEnd="@dimen/spacing_large"
+                app:dividerInsetStart="@dimen/spacing_large"
+                app:dividerThickness="@dimen/spacing_small" />
         </FrameLayout>
 
         <FrameLayout
@@ -177,19 +174,19 @@
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|center_horizontal"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/spacing_mlarge"
                 android:foregroundGravity="center"
                 app:dividerColor="@color/text_color"
-                app:dividerInsetEnd="16dp"
-                app:dividerInsetStart="16dp"
-                app:dividerThickness="4dp" />
+                app:dividerInsetEnd="@dimen/spacing_large"
+                app:dividerInsetStart="@dimen/spacing_large"
+                app:dividerThickness="@dimen/spacing_small" />
         </FrameLayout>
 
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginEnd="20dp">
+            android:layout_marginEnd="@dimen/spacing_small">
 
             <NumberPicker
                 android:id="@+id/numberPicker_gender"
@@ -203,12 +200,12 @@
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|center_horizontal"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/spacing_mlarge"
                 android:foregroundGravity="center"
                 app:dividerColor="@color/text_color"
-                app:dividerInsetEnd="16dp"
-                app:dividerInsetStart="16dp"
-                app:dividerThickness="4dp" />
+                app:dividerInsetEnd="@dimen/spacing_large"
+                app:dividerInsetStart="@dimen/spacing_large"
+                app:dividerThickness="@dimen/spacing_small" />
         </FrameLayout>
 
 
@@ -218,9 +215,9 @@
         android:id="@+id/calculate_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="@dimen/spacing_mxlarge"
+        android:layout_marginTop="@dimen/spacing_mxlarge"
+        android:layout_marginEnd="@dimen/spacing_mxlarge"
         android:background="@drawable/round_corner_button_gradient"
         android:fontFamily="@font/raleway"
         android:text="@string/calculate_btn"

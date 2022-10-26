@@ -16,20 +16,20 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val repo: BMIRepository
-): ViewModel() {
-       private val _results = MutableStateFlow(Results("", emptyList(), "", "", ""))
-        val results : StateFlow<Results>
-            get() = _results
+) : ViewModel() {
+    private val _results = MutableStateFlow(Results("", emptyList(), "", "", ""))
+    val results: StateFlow<Results>
+        get() = _results
 
 
-    fun calculate(details: Details) = repo.calculateBMIAndPonderalIndex(personalBMIDetails = details)
-
+    fun calculate(details: Details) =
+        repo.calculateBMIAndPonderalIndex(personalBMIDetails = details)
 
 
     fun shareScreenShot(activity: Activity, view: View) = repo.shareScreenShot(activity, view)
 
 
-    fun openPlayMarket(activity: Activity){
+    fun openPlayMarket(activity: Activity) {
         viewModelScope.launch {
             repo.openPlayMarket(activity)
         }

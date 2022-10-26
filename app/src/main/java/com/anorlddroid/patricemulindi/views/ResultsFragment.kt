@@ -30,9 +30,8 @@ class ResultsFragment : Fragment() {
 
     private lateinit var binding: FragmentResultsBinding
     private val args: ResultsFragmentArgs by navArgs()
-    private  val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels()
     var currentNativeAd: NativeAd? = null
-
 
 
     override fun onCreateView(
@@ -73,7 +72,8 @@ class ResultsFragment : Fragment() {
             populateNativeAdView(nativeAd, adView)
             binding.nativeAd.removeAllViews()
             binding.nativeAd.elevation = 12F
-            binding.nativeAd.background = ContextCompat.getDrawable(requireContext(), R.drawable.frame_layout_bg)
+            binding.nativeAd.background =
+                ContextCompat.getDrawable(requireContext(), R.drawable.frame_layout_bg)
             binding.nativeAd.addView(adView)
         }
         val adLoader = adBuilder.withAdListener(object : AdListener() {
@@ -82,20 +82,21 @@ class ResultsFragment : Fragment() {
                     """
            domain: ${loadAdError.domain}, code: ${loadAdError.code}, message: ${loadAdError.message}
           """"
-                if (BuildConfig.DEBUG){
-                    Log.d( "ADLOADER","Failed to load native ad with error $error"
+                if (BuildConfig.DEBUG) {
+                    Log.d(
+                        "ADLOADER", "Failed to load native ad with error $error"
                     )
                 }
             }
         }).build()
         adLoader.loadAd(AdRequest.Builder().build())
-        activity?.lifecycle?.addObserver(MainActivityObserver{
+        activity?.lifecycle?.addObserver(MainActivityObserver {
             val toolbar: Toolbar = view.findViewById(R.id.tool_bar)
             (activity as AppCompatActivity).setSupportActionBar(
                 toolbar
             )
             toolbar.setNavigationOnClickListener {
-               findNavController().navigate(R.id.action_navigation_results_to_navigation_home)
+                findNavController().navigate(R.id.action_navigation_results_to_navigation_home)
             }
         })
 
@@ -108,6 +109,7 @@ class ResultsFragment : Fragment() {
             activity?.let { it1 -> viewModel.openPlayMarket(it1) }
         }
     }
+
     private fun populateNativeAdView(nativeAd: NativeAd, adView: NativeAdView) {
         adView.mediaView = adView.findViewById(R.id.ad_media)
         adView.headlineView = adView.findViewById(R.id.ad_headline)

@@ -2,21 +2,22 @@
 <com.google.android.gms.ads.nativead.NativeAdView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="#FFFFFF"
-        android:minHeight="50dp"
+        android:background="@color/white"
+        android:minHeight="@dimen/spacing_xxlarge"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingTop="3dp">
+            android:paddingLeft="@dimen/spacing_mlarge"
+            android:paddingTop="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_mlarge">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -33,8 +34,8 @@
                         android:id="@+id/ad_headline"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#0000FF"
-                        android:textSize="16sp"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/text_size_xsmall"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -46,8 +47,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:gravity="bottom"
-                            android:textSize="14sp"
-                            android:textStyle="bold"/>
+                            android:textSize="@dimen/text_size_xmsmall"
+                            android:textStyle="bold" />
 
                         <RatingBar
                             android:id="@+id/ad_stars"
@@ -55,8 +56,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:isIndicator="true"
-                            android:numStars="5"
-                            android:stepSize="0.5" />
+                            android:numStars="@dimen/number_of_start"
+                            android:stepSize="@dimen/step_size" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -71,51 +72,51 @@
                     android:id="@+id/ad_body"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:textSize="12sp" />
+                    android:layout_marginEnd="@dimen/spacing_mlarge"
+                    android:layout_marginRight="@dimen/spacing_mlarge"
+                    android:textSize="@dimen/text_size_xxsmall" />
 
                 <com.google.android.gms.ads.nativead.MediaView
                     android:id="@+id/ad_media"
+                    android:layout_width="@dimen/media_view_width"
+                    android:layout_height="@dimen/media_view_height"
                     android:layout_gravity="center_horizontal"
-                    android:layout_width="250dp"
-                    android:layout_height="175dp"
-                    android:layout_marginTop="5dp" />
+                    android:layout_marginTop="@dimen/spacing_medium" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:orientation="horizontal"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="10dp">
+                    android:paddingTop="@dimen/spacing_middle"
+                    android:paddingBottom="@dimen/spacing_middle">
 
                     <TextView
                         android:id="@+id/ad_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="5dp"
-                        android:paddingStart="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingEnd="5dp"
-                        android:textSize="12sp" />
+                        android:paddingStart="@dimen/spacing_medium"
+                        android:paddingLeft="@dimen/spacing_medium"
+                        android:paddingEnd="@dimen/spacing_medium"
+                        android:paddingRight="@dimen/spacing_medium"
+                        android:textSize="@dimen/text_size_xxsmall" />
 
                     <TextView
                         android:id="@+id/ad_store"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="5dp"
-                        android:paddingStart="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingEnd="5dp"
-                        android:textSize="12sp" />
+                        android:paddingStart="@dimen/spacing_medium"
+                        android:paddingLeft="@dimen/spacing_medium"
+                        android:paddingEnd="@dimen/spacing_medium"
+                        android:paddingRight="@dimen/spacing_medium"
+                        android:textSize="@dimen/text_size_xxsmall" />
 
                     <Button
                         android:id="@+id/ad_call_to_action"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/text_size_xxsmall" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

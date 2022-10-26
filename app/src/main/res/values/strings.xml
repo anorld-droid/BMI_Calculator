@@ -13,8 +13,18 @@
     <string name="rate">Rate</string>
     <string name="calculate_your_body_mass_index">Calculate Your Body Mass Index</string>
     <string name="enter_personal_details">Enter Personal Details</string>
+
     <string name="interstitial_unit_id">ca-app-pub-3940256099942544/1033173712</string>
     <string name="native_unit_id">ca-app-pub-3940256099942544/2247696110</string>
+
     <string name="dot">.</string>
     <string name="body_mass_index">BODY MASS INDEX</string>
+    <!--Fragment Results holders-->
+    <string name="eighteen">18</string>
+    <string name="sixty_four">64</string>
+    <string name="greetings">HELLO OLIVIA, YOU ARE NORMAL</string>
+    <string name="bmi_range">Normal BMI range: 18.5kg/m2 – 25kg/m2</string>
+    <string name="ponderal_index">Ponderal Index: 10kg/m3</string>
+
+
 </resources>

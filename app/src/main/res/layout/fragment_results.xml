@@ -6,26 +6,26 @@
     android:layout_height="match_parent"
 
     tools:context=".views.ResultsFragment">
+
     <LinearLayout
         android:id="@+id/appBarLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
-        <include layout="@layout/custom_toolbar"/>
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent">
 
+        <include layout="@layout/custom_toolbar" />
+    </LinearLayout>
 
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="@dimen/spacing_xmlarge"
+        android:layout_marginTop="@dimen/spacing_xxmlarge"
+        android:layout_marginEnd="@dimen/spacing_xmlarge"
         android:background="@drawable/card_gradient"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +36,7 @@
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="@dimen/spacing_xmlarge"
             app:dividerColor="@color/divider_color" />
 
 
@@ -45,12 +45,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|center_horizontal"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/spacing_small"
             android:fontFamily="@font/raleway"
+            android:text="@string/body_mass_index"
             android:textColor="@color/divider_color"
-            android:textSize="24sp"
-            android:textStyle="normal"
-            android:text="@string/body_mass_index" />
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="normal" />
 
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
@@ -59,9 +59,9 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="88dp"
+            android:layout_height="@dimen/spacing_xxxmlarge"
             android:layout_gravity="center|center_horizontal"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="@dimen/spacing_xxxlarge"
             android:orientation="horizontal">
 
             <TextView
@@ -70,10 +70,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|bottom"
                 android:fontFamily="@font/poppins"
-                tools:text="18"
                 android:textColor="@color/white"
-                android:textSize="80sp"
-                android:textStyle="normal" />
+                android:textSize="@dimen/text_size_xlarge"
+                android:textStyle="normal"
+                tools:text="@string/eighteen" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -82,7 +82,7 @@
                 android:fontFamily="@font/poppins"
                 android:text="@string/dot"
                 android:textColor="@color/white"
-                android:textSize="40sp"
+                android:textSize="@dimen/text_size_xmlarge"
                 android:textStyle="normal" />
 
             <TextView
@@ -91,17 +91,17 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center_horizontal"
                 android:fontFamily="@font/poppins"
-                tools:text="64"
                 android:textColor="@color/white"
-                android:textSize="48sp"
-                android:textStyle="normal" />
+                android:textSize="@dimen/text_size_xxmlarge"
+                android:textStyle="normal"
+                tools:text="@string/sixty_four" />
         </LinearLayout>
 
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="88dp"
-            android:layout_marginEnd="88dp"
+            android:layout_marginStart="@dimen/spacing_xxxmlarge"
+            android:layout_marginEnd="@dimen/spacing_xxxmlarge"
             app:dividerColor="@color/white" />
 
         <TextView
@@ -109,43 +109,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="@dimen/spacing_xxxlarge"
             android:fontFamily="@font/poppins"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_size_xsmall"
             android:textStyle="bold"
-            tools:text="HELLO OLIVIA, YOU ARE NORMAL" />
+            tools:text="@string/greetings" />
 
         <TextView
             android:id="@+id/txt_vw_BMI_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="@dimen/spacing_middle"
             android:fontFamily="@font/raleway"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_size_xsmall"
             android:textStyle="normal"
-            tools:text="Normal BMI range: 18.5kg/m2 - 25kg/m2" />
+            tools:text="@string/bmi_range" />
 
         <TextView
             android:id="@+id/txt_vw_ponderal_index"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/spacing_xmedium"
             android:fontFamily="@font/raleway"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_size_xsmall"
             android:textStyle="normal"
-            tools:text="Ponderal Index: 10kg/m3 " />
+            tools:text="@string/ponderal_index" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="@dimen/spacing_xmlarge"
+            android:layout_marginBottom="@dimen/spacing_large"
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
@@ -155,22 +155,22 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_horizontal"
                 android:fontFamily="@font/raleway"
+                android:paddingStart="1@dimen/spacing_xmedium"
+                android:paddingTop="@dimen/spacing_middle"
+                android:paddingEnd="1@dimen/spacing_xmedium"
+                android:paddingBottom="@dimen/spacing_middle"
                 android:text="@string/share"
                 android:textAllCaps="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@color/white"
+                android:textSize="@dimen/text_size_small"
                 android:textStyle="bold"
-                android:textSize="20sp"
-                android:paddingStart="18dp"
-                android:paddingEnd="18dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
                 android:theme="@style/Theme.MaterialComponents.Light"
-                app:cornerRadius="8dp"
+                app:cornerRadius="@dimen/spacing_xmedium"
                 app:icon="@drawable/share"
                 app:iconGravity="textStart"
-                app:iconSize="24dp"
-                app:iconPadding="5dp"
+                app:iconPadding="@dimen/spacing_medium"
+                app:iconSize="@dimen/spacing_mxlarge"
                 app:iconTint="@null"
                 app:strokeColor="@color/white" />
 
@@ -180,24 +180,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|center_horizontal"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="@dimen/spacing_xmlarge"
                 android:fontFamily="@font/raleway"
+                android:paddingStart="1@dimen/spacing_xmedium"
+                android:paddingTop="@dimen/spacing_middle"
+                android:paddingEnd="1@dimen/spacing_xmedium"
+                android:paddingBottom="@dimen/spacing_middle"
                 android:text="@string/rate"
-                android:textSize="20sp"
                 android:textAllCaps="false"
-                android:paddingStart="18dp"
-                app:iconPadding="5dp"
-                android:paddingEnd="18dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/white"
+                android:textSize="@dimen/text_size_small"
                 android:textStyle="bold"
                 android:theme="@style/Theme.MaterialComponents.Light"
-                app:cornerRadius="8dp"
+                app:cornerRadius="@dimen/spacing_xmedium"
                 app:icon="@drawable/star"
                 app:iconGravity="textStart"
-                app:iconSize="24dp"
+                app:iconPadding="@dimen/spacing_medium"
+                app:iconSize="@dimen/spacing_mxlarge"
                 app:iconTint="@null"
                 app:strokeColor="@color/white" />
         </LinearLayout>
@@ -206,13 +206,12 @@
     <FrameLayout
         android:id="@+id/native_ad"
         android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
+        android:layout_height="@dimen/ad_banner_height"
+        android:layout_marginStart="@dimen/spacing_xmedium"
+        android:layout_marginTop="@dimen/spacing_xmedium"
+        android:layout_marginEnd="@dimen/spacing_xmedium"
+        android:layout_marginBottom="@dimen/spacing_mxlarge"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-         />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

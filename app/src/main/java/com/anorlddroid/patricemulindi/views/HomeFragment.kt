@@ -31,8 +31,8 @@ class HomeFragment : Fragment() {
 
 
     private lateinit var binding: FragmentHomeBinding
-    private  val viewModel by viewModels<MainViewModel>()
-    private  var mInterstitialAd: InterstitialAd? = null
+    private val viewModel by viewModels<MainViewModel>()
+    private var mInterstitialAd: InterstitialAd? = null
     private lateinit var adRequest: AdRequest
     private var weight by Delegates.notNull<Int>()
     private var height by Delegates.notNull<Int>()
@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.lifecycle?.addObserver(MainActivityObserver{
+        activity?.lifecycle?.addObserver(MainActivityObserver {
             val toolbar: Toolbar = view.findViewById(R.id.tool_bar);
             (activity as AppCompatActivity).setSupportActionBar(
                 toolbar
@@ -57,7 +57,7 @@ class HomeFragment : Fragment() {
             val weightPicker: NumberPicker = binding.numberPickerWeight
             weightPicker.maxValue = 300
             weightPicker.minValue = 10
-            weightPicker.value  = 43
+            weightPicker.value = 43
             weight = 43
             weightPicker.setOnValueChangedListener { _, _, newValue ->
                 weight = newValue
@@ -86,11 +86,15 @@ class HomeFragment : Fragment() {
 
         MobileAds.initialize(requireContext())
         adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(requireContext(), getString(R.string.interstitial_unit_id), adRequest, object: InterstitialAdLoadCallback(){
-            override fun onAdLoaded(insterstitialAd: InterstitialAd){
-                mInterstitialAd = insterstitialAd
-            }
-        })
+        InterstitialAd.load(
+            requireContext(),
+            getString(R.string.interstitial_unit_id),
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdLoaded(insterstitialAd: InterstitialAd) {
+                    mInterstitialAd = insterstitialAd
+                }
+            })
 
         binding.calculateBtn.setOnClickListener {
             if (verifyInputs()) {
@@ -102,17 +106,21 @@ class HomeFragment : Fragment() {
                         gender = gender
                     )
                 )
-                if (mInterstitialAd != null){
-                    mInterstitialAd?.fullScreenContentCallback = object: FullScreenContentCallback(){
-                        override fun onAdDismissedFullScreenContent() {
-                            super.onAdDismissedFullScreenContent()
-                            val actions = HomeFragmentDirections.actionNavigationHomeToNavigationResults(result)
-                            findNavController().navigate(actions)
-                            mInterstitialAd = null
+                if (mInterstitialAd != null) {
+                    mInterstitialAd?.fullScreenContentCallback =
+                        object : FullScreenContentCallback() {
+                            override fun onAdDismissedFullScreenContent() {
+                                super.onAdDismissedFullScreenContent()
+                                val actions =
+                                    HomeFragmentDirections.actionNavigationHomeToNavigationResults(
+                                        result
+                                    )
+                                findNavController().navigate(actions)
+                                mInterstitialAd = null
+                            }
                         }
-                    }
                     mInterstitialAd?.show(requireActivity())
-                }else {
+                } else {
                     val actions =
                         HomeFragmentDirections.actionNavigationHomeToNavigationResults(result)
                     findNavController().navigate(actions)
@@ -121,12 +129,13 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun verifyInputs() : Boolean{
-        if (binding.name.text.toString().isEmpty() ) {
-            Toast.makeText(activity, "Enter your personal details to continue", Toast.LENGTH_LONG).show()
+    private fun verifyInputs(): Boolean {
+        if (binding.name.text.toString().isEmpty()) {
+            Toast.makeText(activity, "Enter your personal details to continue", Toast.LENGTH_LONG)
+                .show()
             return false
         }
-        return  true
+        return true
     }
 
 
