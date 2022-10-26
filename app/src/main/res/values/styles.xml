@@ -5,14 +5,13 @@
             @drawable/splash_screen_bg
         </item>
     </style>
-    <style name="NumberPickerTheme" parent="Theme.PatriceMulindi">
+    <style name="NumberPickerTheme">
         <item name="android:colorControlNormal">@color/white</item>
         <item name="android:textColorPrimary">@color/text_color</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
-
     </style>
-
+ 
     <style name="ToolbarTheme" parent="Theme.PatriceMulindi">
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">normal</item>

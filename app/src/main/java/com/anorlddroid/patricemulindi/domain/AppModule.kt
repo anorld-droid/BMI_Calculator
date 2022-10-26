@@ -1,7 +1,7 @@
 package com.anorlddroid.patricemulindi.domain
 
-import com.anorlddroid.patricemulindi.usecases.BMIRepository
-import com.anorlddroid.patricemulindi.usecases.BMIRepositoryImpl
+import com.anorlddroid.patricemulindi.repository.BMIRepository
+import com.anorlddroid.patricemulindi.repository.BMIRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

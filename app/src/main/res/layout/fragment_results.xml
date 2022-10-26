@@ -4,30 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:backgroundTint="@color/white"
-    tools:context=".views.ResultsFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
+    tools:context=".views.ResultsFragment">
+    <LinearLayout
         android:id="@+id/appBarLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <include layout="@layout/custom_toolbar"/>
+    </LinearLayout>
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/results_app_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:title="@string/results_fg_title"
-            app:titleCentered="true"
-            app:titleTextAppearance="@style/ToolbarTheme"
-            app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_24"
-            android:background="@drawable/statusbar_gradient_bg_color"
-            app:titleTextColor="@color/white"
-            />
-    </com.google.android.material.appbar.AppBarLayout>
+
 
     <LinearLayout
         android:id="@+id/linearLayout"

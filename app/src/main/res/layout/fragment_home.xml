@@ -1,137 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:backgroundTint="@color/white"
+    android:orientation="vertical"
     tools:context=".views.HomeFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_gravity="top"
+        >
+        <include layout="@layout/custom_toolbar"/>
+    </LinearLayout>
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/home_app_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/statusbar_gradient_bg_color"
-            app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_24"
-            app:title="@string/home_fg_title"
-            app:titleTextAppearance="@style/ToolbarTheme"
-            app:titleCentered="true"
-            app:titleTextColor="@color/white" />
-    </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="136dp"
         android:fontFamily="@font/raleway"
         android:text="@string/enter_personal_details"
         android:textColor="@color/text_color"
         android:textSize="32sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-         />
+        android:textStyle="normal" />
 
     <EditText
         android:id="@+id/name"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:inputType="textPersonName"
-        android:hint="@string/name"
-        android:fontFamily="@font/raleway"
-        android:textColorHint="@color/faint_txt_color"
         android:background="@drawable/rounded_corner_edit_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:fontFamily="@font/raleway"
+        android:hint="@string/name"
+        android:inputType="textPersonName"
         android:paddingStart="20dp"
         android:paddingTop="16dp"
-        android:textColor="@color/faint_txt_color"
-        android:paddingBottom="16dp"
-        android:textStyle="normal"
         android:paddingEnd="20dp"
+        android:paddingBottom="16dp"
+        android:textColor="@color/faint_txt_color"
+        android:textColorHint="@color/faint_txt_color"
         android:textSize="22sp"
-        />
+        android:textStyle="normal" />
 
 
     <TextView
         android:id="@+id/cal_txtv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="44dp"
         android:fontFamily="@font/poppins"
         android:text="@string/calculate_your_body_mass_index"
         android:textColor="@color/faint_txt_color"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        app:layout_constraintVertical_bias="0.0"
-        />
+        android:textSize="22sp" />
 
-
-    <TextView
-        android:id="@+id/weight_txt_vw"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="start|center_horizontal"
-        android:layout_marginStart="44dp"
         android:layout_marginTop="32dp"
-        android:fontFamily="@font/poppins"
-        android:text="@string/weight"
-        android:textColor="@color/num_picker_header_colors"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/numberpickers"
-        app:layout_constraintTop_toBottomOf="@+id/cal_txtv" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/weight_txt_vw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_horizontal"
+            android:layout_marginStart="56dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/weight"
+            android:textColor="@color/num_picker_header_colors"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
 
-    <TextView
-        android:id="@+id/height_txt_vw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|center_horizontal"
-        android:layout_marginEnd="40dp"
-        android:fontFamily="@font/poppins"
-        android:text="@string/gender"
-        android:textColor="@color/num_picker_header_colors"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/gender_txt_vw"
-        app:layout_constraintEnd_toEndOf="@+id/numberpickers"
-        app:layout_constraintTop_toTopOf="@+id/gender_txt_vw"
-        app:layout_constraintVertical_bias="1.0" />
+        <TextView
+            android:id="@+id/height_txt_vw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
 
-    <TextView
-        android:id="@+id/gender_txt_vw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|center_horizontal"
-        android:fontFamily="@font/poppins"
-        android:text="@string/height"
-        android:textColor="@color/num_picker_header_colors"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/weight_txt_vw"
-        app:layout_constraintEnd_toStartOf="@+id/height_txt_vw"
-        app:layout_constraintStart_toEndOf="@+id/weight_txt_vw"
-        app:layout_constraintTop_toTopOf="@+id/weight_txt_vw"
-        app:layout_constraintVertical_bias="0.0" />
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/poppins"
+            android:text="@string/gender"
+            android:textColor="@color/num_picker_header_colors"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/gender_txt_vw"
+            app:layout_constraintEnd_toEndOf="@+id/numberpickers"
+            app:layout_constraintTop_toTopOf="@+id/gender_txt_vw"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/gender_txt_vw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_gravity="end|center_horizontal"
+            android:fontFamily="@font/poppins"
+            android:text="@string/height"
+            android:textColor="@color/num_picker_header_colors"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/weight_txt_vw"
+            app:layout_constraintEnd_toStartOf="@+id/height_txt_vw"
+            app:layout_constraintStart_toEndOf="@+id/weight_txt_vw"
+            app:layout_constraintTop_toTopOf="@+id/weight_txt_vw"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/numberpickers"
@@ -238,17 +220,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        app:backgroundTint="@null"
-        android:background="@drawable/round_corner_button_gradient"
         android:layout_marginEnd="24dp"
+        android:background="@drawable/round_corner_button_gradient"
+        android:fontFamily="@font/raleway"
+        android:text="@string/calculate_btn"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:theme="@style/Theme.MaterialComponents.Light"
+        app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@color/white"
-        android:text="@string/calculate_btn"
-        android:fontFamily="@font/raleway"
-        android:theme="@style/Theme.MaterialComponents.Light"
-        android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@+id/numberpickers" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

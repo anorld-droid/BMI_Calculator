@@ -50,7 +50,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.lifecycle?.addObserver(MainActivityObserver{
-            val toolbar: Toolbar = binding.homeAppBar
+            val toolbar: Toolbar = view.findViewById(R.id.tool_bar);
             (activity as AppCompatActivity).setSupportActionBar(
                 toolbar
             )
