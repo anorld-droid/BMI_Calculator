@@ -18,7 +18,7 @@ abstract class AppModule {
     abstract fun provideCalculateBMIUseCase(mBMIUseCase: CalculateBMIUseCaseImpl): CalculateBMIUseCase
 
     @Binds
-    abstract fun provideOPenPlayMarketUseCase(mOPenPlayMarketUseCase: OPenPlayMarketUseCaseImpl): OPenPlayMarketUseCase
+    abstract fun provideOPenPlayMarketUseCase(mOpenPlayMarketUseCase: OpenPlayMarketUseCaseImpl): OpenPlayMarketUseCase
 
     @Binds
     abstract fun provideFileRepository(mFileRepo: FileRepositoryImpl): FileRepository

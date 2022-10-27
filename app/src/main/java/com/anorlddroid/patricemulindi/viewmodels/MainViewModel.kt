@@ -10,7 +10,7 @@ import com.anorlddroid.patricemulindi.repository.BMIRepository
 import com.anorlddroid.patricemulindi.repository.FileRepository
 import com.anorlddroid.patricemulindi.repository.ScreenshotRepository
 import com.anorlddroid.patricemulindi.repository.usecase.CalculateBMIUseCase
-import com.anorlddroid.patricemulindi.repository.usecase.OPenPlayMarketUseCase
+import com.anorlddroid.patricemulindi.repository.usecase.OpenPlayMarketUseCase
 import com.anorlddroid.patricemulindi.repository.usecase.ShareScreenshotUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -23,7 +23,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val mBMIRepo: BMIRepository,
     private val mBMIUseCase: CalculateBMIUseCase,
-    private val mOPenPlayMarketUseCase: OPenPlayMarketUseCase,
+    private val mOpenPlayMarketUseCase: OpenPlayMarketUseCase,
     private val mFileRepo: FileRepository,
     private val mScreenshotRepo: ScreenshotRepository,
     private val mShareScreenshotUseCase: ShareScreenshotUseCase
@@ -49,7 +49,7 @@ class MainViewModel @Inject constructor(
 
     fun openPlayMarket(activity: Activity) {
         viewModelScope.launch {
-            mOPenPlayMarketUseCase.execute(activity)
+            mOpenPlayMarketUseCase.execute(activity)
         }
     }
 
