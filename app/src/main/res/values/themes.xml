@@ -4,6 +4,7 @@
         <!-- Customize your theme here. -->
         <item name="android:windowTranslucentStatus">true</item>
     </style>
+
     <style name="Widget.PatriceMulindi.NumberPickerTheme" parent="@android:style/Widget.Material.NumberPicker" tools:targetApi="n">
         <item name="android:colorControlNormal">@color/white</item>
         <item name="android:textColorPrimary">@color/text_color</item>

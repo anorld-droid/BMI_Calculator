@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/navigation"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
     app:startDestination="@+id/navigation_home">
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.anorlddroid.patricemulindi.views.HomeFragment"
         android:label="@string/home_fg_title"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_navigation_results"
             app:destination="@id/navigation_results"
@@ -24,7 +24,7 @@
         android:id="@+id/navigation_results"
         android:name="com.anorlddroid.patricemulindi.views.ResultsFragment"
         android:label="@string/results_fg_title"
-        tools:layout="@layout/fragment_results" >
+        tools:layout="@layout/fragment_results">
         <argument
             android:name="userDetails"
             app:argType="com.anorlddroid.patricemulindi.model.Details" />

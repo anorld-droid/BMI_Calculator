@@ -1,21 +1,19 @@
 package com.anorlddroid.patricemulindi.repository
 
 import android.app.Activity
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
 import android.net.Uri
 import android.view.View
-import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import com.anorlddroid.patricemulindi.BuildConfig
 import java.io.File
 import javax.inject.Inject
 
 interface ScreenshotRepository {
-    fun takeScreenshot(view: View):Bitmap
-    fun getScreenshotUri(activity: Activity, imageFile:File): Uri
+    fun takeScreenshot(view: View): Bitmap
+    fun getScreenshotUri(activity: Activity, imageFile: File): Uri
 }
 
 
@@ -29,24 +27,12 @@ class ScreenshotRepositoryImpl @Inject constructor() : ScreenshotRepository {
         return bitmap
     }
 
-    override fun getScreenshotUri(activity: Activity, imageFile:File): Uri {
-        verifyPermission(activity)
-       return  FileProvider.getUriForFile(
+    override fun getScreenshotUri(activity: Activity, imageFile: File): Uri {
+
+        return FileProvider.getUriForFile(
             activity,
             BuildConfig.APPLICATION_ID + "." + activity.localClassName + ".provider",
             imageFile
         )
     }
-    private fun verifyPermission(activity: Activity) {
-        val permissions =
-            ActivityCompat.checkSelfPermission(activity, android.Manifest.permission.READ_EXTERNAL_STORAGE)
-        if (permissions != PackageManager.PERMISSION_GRANTED) {
-            val permissionStorage: Array<String> = arrayOf(
-                android.Manifest.permission.READ_EXTERNAL_STORAGE
-            )
-            ActivityCompat.requestPermissions(activity, permissionStorage, 1)
-        }
-    }
-
-
 }

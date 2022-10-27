@@ -26,5 +26,29 @@
     <string name="bmi_range">Normal BMI range: 18.5kg/m2 – 25kg/m2</string>
     <string name="ponderal_index">Ponderal Index: 10kg/m3</string>
 
+    <!--HomeFragment-->
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="invalid_input">Enter your details to proceed</string>
+
+    <!--Result Fragment-->
+    <string name="result">HELLO %s, YOU ARE %s</string>
+    <string name="error">domain: %s,  message: %s</string>
+    <string name="err_msg">Failed to load native ad with error %s</string>
+
+    <!--BMI Use case-->
+    <string name="category">category</string>
+    <string name="categoryInfo">categoryInfo</string>
+    <string name="p_index">Ponderal Index Range: %.2fkg/m3</string>
+    <string name="underweight">Underweight</string>
+    <string name="underweight_info">Underweight BMI range: Less than 18.5kg/m2</string>
+    <string name="normal">Normal</string>
+    <string name="normal_info">Normal BMI range: 18.5kg/m2 – 24.9kg/m2</string>
+    <string name="overweight">Overweight</string>
+    <string name="overweight_info">Overweight BMI range: 25kg/m2 – 29.9kg/m2</string>
+    <string name="obese">Obese</string>
+    <string name="obese_info">Obese BMI range: 30kg/m2 – 39.9kg/m2</string>
+    <string name="severely_obese">Severely Obese</string>
+    <string name="severely_obese_info">Severely Obese BMI range: Greater than 40kg/m2</string>
 
 </resources>

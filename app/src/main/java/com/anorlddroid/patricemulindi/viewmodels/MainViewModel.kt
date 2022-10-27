@@ -6,9 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.anorlddroid.patricemulindi.model.Details
 import com.anorlddroid.patricemulindi.model.Results
-import com.anorlddroid.patricemulindi.repository.*
+import com.anorlddroid.patricemulindi.repository.BMIRepository
+import com.anorlddroid.patricemulindi.repository.FileRepository
+import com.anorlddroid.patricemulindi.repository.ScreenshotRepository
 import com.anorlddroid.patricemulindi.repository.usecase.CalculateBMIUseCase
-import com.anorlddroid.patricemulindi.repository.usecase.CalculateBMIUseCaseImpl
 import com.anorlddroid.patricemulindi.repository.usecase.OPenPlayMarketUseCase
 import com.anorlddroid.patricemulindi.repository.usecase.ShareScreenshotUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,11 +24,9 @@ class MainViewModel @Inject constructor(
     private val mBMIRepo: BMIRepository,
     private val mBMIUseCase: CalculateBMIUseCase,
     private val mOPenPlayMarketUseCase: OPenPlayMarketUseCase,
-    private  val mFileRepo: FileRepository,
-    private  val mScreenshotRepo: ScreenshotRepository,
+    private val mFileRepo: FileRepository,
+    private val mScreenshotRepo: ScreenshotRepository,
     private val mShareScreenshotUseCase: ShareScreenshotUseCase
-
-
 ) : ViewModel() {
 
     private val _results = MutableStateFlow(Results("", emptyList(), "", "", ""))
@@ -41,13 +40,10 @@ class MainViewModel @Inject constructor(
         }
     }
 
-
-
-
-    fun shareScreenShot(activity: Activity, view: View)  {
+    fun shareScreenShot(activity: Activity, view: View) {
         val bitmap = mScreenshotRepo.takeScreenshot(view)
         val imageFile = mFileRepo.saveImageFile(activity, bitmap)
-        mShareScreenshotUseCase.execute(activity, imageFile )
+        mShareScreenshotUseCase.execute(activity, imageFile)
     }
 
 

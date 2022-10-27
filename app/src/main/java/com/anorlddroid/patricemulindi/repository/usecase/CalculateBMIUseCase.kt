@@ -1,5 +1,7 @@
 package com.anorlddroid.patricemulindi.repository.usecase
 
+import android.content.res.Resources
+import com.anorlddroid.patricemulindi.R
 import com.anorlddroid.patricemulindi.model.Details
 import com.anorlddroid.patricemulindi.model.Results
 import com.anorlddroid.patricemulindi.repository.BMIRepository
@@ -21,15 +23,15 @@ class CalculateBMIUseCaseImpl @Inject constructor(
 
         val ponderal: Double = calculatePonderalIndex(userDetails.weight, userDetails.height)
         val categoryDetails: Map<String, String> = getCategory(bmi)
-        val category: String = categoryDetails["category"]!!
+        val category: String = categoryDetails[Resources.getSystem().getString(R.string.category)]!!
 
-        val categoryInfo = categoryDetails["categoryInfo"]!!
+        val categoryInfo = categoryDetails[Resources.getSystem().getString(R.string.categoryInfo)]!!
         val bmIndex = String.format("%.2f", bmi)
 
         return mBMIRepo.convertToResults(
             name = userDetails.name,
             BMIIndex = bmIndex.split("."),
-            PonderalIndex = String.format("Ponderal Index Range: %.2fkg/m3 ", ponderal),
+            PonderalIndex = Resources.getSystem().getString(R.string.p_index, ponderal),
             category = category,
             categoryInfo = categoryInfo
         )
@@ -47,29 +49,29 @@ class CalculateBMIUseCaseImpl @Inject constructor(
 
         when (mBMI) {
             in 0.0..18.4 -> {
-                categoryInfo = "Underweight BMI range: Less than 18.5kg/m2"
-                category = "Underweight"
+                categoryInfo = Resources.getSystem().getString(R.string.underweight_info)
+                category = Resources.getSystem().getString(R.string.category)
             }
             in 18.5..24.9 -> {
-                categoryInfo = "Normal BMI range: 18.5kg/m2 - 24.9kg/m2"
-                category = "Normal"
+                categoryInfo = Resources.getSystem().getString(R.string.normal_info)
+                category = Resources.getSystem().getString(R.string.normal)
             }
             in 25.0..29.9 -> {
-                categoryInfo = "Overweight BMI range: 25kg/m2 - 29.9kg/m2"
-                category = "Overweight"
+                categoryInfo = Resources.getSystem().getString(R.string.overweight_info)
+                category = Resources.getSystem().getString(R.string.overweight)
             }
             in 30.0..39.9 -> {
-                categoryInfo = "Obese BMI range: 30kg/m2 - 39.9kg/m2"
-                category = "Obese"
+                categoryInfo = Resources.getSystem().getString(R.string.obese_info)
+                category = Resources.getSystem().getString(R.string.obese)
             }
             else -> {
-                categoryInfo = "Severely Obese BMI range: Greater than 40kg/m2"
-                category = "Severely Obese"
+                categoryInfo = Resources.getSystem().getString(R.string.severely_obese_info)
+                category = Resources.getSystem().getString(R.string.severely_obese)
             }
 
         }
-        categoryDetails["categoryInfo"] = categoryInfo
-        categoryDetails["category"] = category
+        categoryDetails[Resources.getSystem().getString(R.string.categoryInfo)] = categoryInfo
+        categoryDetails[Resources.getSystem().getString(R.string.category)] = category
 
         return categoryDetails
     }

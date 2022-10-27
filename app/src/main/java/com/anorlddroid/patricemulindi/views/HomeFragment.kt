@@ -1,29 +1,22 @@
 package com.anorlddroid.patricemulindi.views
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.NumberPicker
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-
 import com.anorlddroid.patricemulindi.R
-import com.anorlddroid.patricemulindi.model.Details
 import com.anorlddroid.patricemulindi.databinding.FragmentHomeBinding
-import com.anorlddroid.patricemulindi.domain.MainActivityObserver
+import com.anorlddroid.patricemulindi.model.Details
 import com.anorlddroid.patricemulindi.viewmodels.MainViewModel
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
-import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,7 +26,7 @@ import kotlin.properties.Delegates
 class HomeFragment : Fragment() {
 
 
-    private  var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<MainViewModel>()
     private var mInterstitialAd: InterstitialAd? = null
@@ -62,25 +55,26 @@ class HomeFragment : Fragment() {
 
         binding.calculateBtn.setOnClickListener {
             val name = binding.name.text.toString()
-            if (viewModel.verifyInput(name)) { //TODO Implement
-                val details =  viewModel.convertToDetails(
-                        name = name,
-                        weight = weight.toDouble(),
-                        height = height.toDouble(),
-                        gender = gender
-                    )
+            if (viewModel.verifyInput(name)) {
+                val details = viewModel.convertToDetails(
+                    name = name,
+                    weight = weight.toDouble(),
+                    height = height.toDouble(),
+                    gender = gender
+                )
                 if (mInterstitialAd != null) {
                     showInterstitialAd(details = details)
                 } else {
                     navigateToResultFragment(details = details)
                 }
-            }else {
-                Toast.makeText(context, "Enter yout details to proceed", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, getString(R.string.invalid_input), Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
 
-    private fun loadInterstitialAd(){
+    private fun loadInterstitialAd() {
         adRequest = AdRequest.Builder().build()
         InterstitialAd.load(
             requireContext(),
@@ -93,7 +87,7 @@ class HomeFragment : Fragment() {
             })
     }
 
-    private fun populateNumberPickers(){
+    private fun populateNumberPickers() {
         val weightPicker: NumberPicker = binding.numberPickerWeight
         weightPicker.maxValue = 300
         weightPicker.minValue = 10
@@ -113,8 +107,8 @@ class HomeFragment : Fragment() {
         }
 
 
-        val genderPicker:  NumberPicker = binding.numberPickerGender
-        val genderList = arrayOf("Male", "Female")
+        val genderPicker: NumberPicker = binding.numberPickerGender
+        val genderList = arrayOf(getString(R.string.male), getString(R.string.female))
         genderPicker.maxValue = 1
         genderPicker.minValue = 0
         genderPicker.value = 1
@@ -124,18 +118,20 @@ class HomeFragment : Fragment() {
             gender = genderList[newValue]
         }
     }
-    private fun showInterstitialAd(details: Details){
+
+    private fun showInterstitialAd(details: Details) {
         mInterstitialAd?.fullScreenContentCallback =
             object : FullScreenContentCallback() {
                 override fun onAdDismissedFullScreenContent() {
                     super.onAdDismissedFullScreenContent()
-                   navigateToResultFragment(details = details)
+                    navigateToResultFragment(details = details)
                     mInterstitialAd = null
                 }
             }
         mInterstitialAd?.show(requireActivity())
     }
-    private fun navigateToResultFragment(details: Details){
+
+    private fun navigateToResultFragment(details: Details) {
         val actions =
             HomeFragmentDirections.actionNavigationHomeToNavigationResults(details)
         findNavController().navigate(actions)

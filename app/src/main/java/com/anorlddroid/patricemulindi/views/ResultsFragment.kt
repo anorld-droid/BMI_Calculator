@@ -31,8 +31,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ResultsFragment : Fragment() {
-
-
+    private val TAG = "ADLOADER"
     private var _binding: FragmentResultsBinding? = null
     private val binding get() = _binding!!
     private val args: ResultsFragmentArgs by navArgs()
@@ -50,15 +49,15 @@ class ResultsFragment : Fragment() {
             viewModel.results.collect { results ->
                 binding.BMIResultWholeNum.text = results.BMIIndex[0]
                 binding.BMIResultRemNum.text = results.BMIIndex[1]
-                binding.txtVwNameRate.text = String.format(
-                    "HELLO ${results.name.uppercase()}, YOU ARE ${results.category.uppercase()}"
+                binding.txtVwNameRate.text = getString(
+                    R.string.result,
+                    results.name.uppercase(),
+                    results.category.uppercase()
                 )
                 binding.txtVwBMIInfo.text = results.categoryInfo
                 binding.txtVwPonderalIndex.text = results.PonderalIndex
             }
         }
-        //TODO Move to viewModel
-//
         return binding.root
     }
 
@@ -107,13 +106,11 @@ class ResultsFragment : Fragment() {
         }
         val adLoader = adBuilder.withAdListener(object : AdListener() {
             override fun onAdFailedToLoad(loadAdError: LoadAdError) {
-                val error =
-                    """
-           domain: ${loadAdError.domain}, code: ${loadAdError.code}, message: ${loadAdError.message}
-          """"
+                val error = getString(R.string.error, loadAdError.domain, loadAdError.message)
+
                 if (BuildConfig.DEBUG) {
                     Log.d(
-                        "ADLOADER", "Failed to load native ad with error $error"
+                        TAG, getString(R.string.err_msg, error)
                     )
                 }
             }

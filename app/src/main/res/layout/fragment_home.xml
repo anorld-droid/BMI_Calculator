@@ -11,7 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top">
+
         <include layout="@layout/custom_toolbar" />
+
     </LinearLayout>
 
 
@@ -169,8 +171,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center|center_horizontal"
                 android:gravity="center"
-                android:theme="@style/Widget.PatriceMulindi.NumberPickerTheme"
-               />
+                android:theme="@style/Widget.PatriceMulindi.NumberPickerTheme" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/divider_height"
@@ -189,16 +190,14 @@
             android:id="@+id/gender_frame_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-          >
+            android:layout_gravity="end">
 
             <NumberPicker
                 android:id="@+id/numberPicker_gender"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center|center_horizontal"
-                android:theme="@style/Widget.PatriceMulindi.NumberPickerTheme"
-                 />
+                android:theme="@style/Widget.PatriceMulindi.NumberPickerTheme" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/divider_gender"
@@ -213,8 +212,6 @@
                 app:dividerThickness="@dimen/spacing_small" />
         </FrameLayout>
     </com.google.android.material.card.MaterialCardView>
-
-
 
 
     <com.google.android.material.button.MaterialButton
