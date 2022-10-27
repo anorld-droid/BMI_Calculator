@@ -3,9 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/card_gradient.xml" value="0.2975" />
+        <entry key="app/src/main/res/drawable/frame_layout_bg.xml" value="0.2975" />
+        <entry key="app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.2975" />
+        <entry key="app/src/main/res/drawable/number_picker_divider.xml" value="0.188" />
         <entry key="app/src/main/res/drawable/round_corner_button_gradient.xml" value="0.189" />
         <entry key="app/src/main/res/drawable/rounded_corner_edit_text.xml" value="0.189" />
         <entry key="app/src/main/res/drawable/splash_screen_bg.xml" value="0.2975" />
+        <entry key="app/src/main/res/drawable/statusbar_gradient_bg_color.xml" value="0.2975" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18072916666666666" />
         <entry key="app/src/main/res/layout/custom_toolbar.xml" value="0.2110705596107056" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.35520833333333335" />
