@@ -72,9 +72,9 @@ class ResultsFragment : Fragment() {
             findNavController().navigate(R.id.action_navigation_results_to_navigation_home)
         }
         loadNativeAd()
-//        binding.shareBtn.setOnClickListener {
-//            activity?.let { it1 -> viewModel.shareScreenShot(it1, binding.root) }
-//        }
+        binding.shareBtn.setOnClickListener {
+            activity?.let { it1 -> viewModel.shareScreenShot(it1, binding.root) }
+        }
         binding.rateBtn.setOnClickListener {
             activity?.let { activity ->
                 viewModel.openPlayMarket(activity)
