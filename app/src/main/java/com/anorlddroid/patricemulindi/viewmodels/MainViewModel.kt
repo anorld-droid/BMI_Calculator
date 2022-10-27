@@ -9,6 +9,7 @@ import com.anorlddroid.patricemulindi.model.Results
 import com.anorlddroid.patricemulindi.repository.BMIRepository
 import com.anorlddroid.patricemulindi.repository.usecase.CalculateBMIUseCase
 import com.anorlddroid.patricemulindi.repository.usecase.CalculateBMIUseCaseImpl
+import com.anorlddroid.patricemulindi.repository.usecase.OPenPlayMarketUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,7 +20,9 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val mBMIRepo: BMIRepository,
-    private val mBMIUseCase: CalculateBMIUseCase
+    private val mBMIUseCase: CalculateBMIUseCase,
+    private val mOPenPlayMarketUseCase: OPenPlayMarketUseCase
+
 ) : ViewModel() {
 
     private val _results = MutableStateFlow(Results("", emptyList(), "", "", ""))
@@ -59,11 +62,11 @@ class MainViewModel @Inject constructor(
 //    fun shareScreenShot(activity: Activity, view: View) = mBMIRepo.shareScreenShot(activity, view)
 //
 //
-//    fun openPlayMarket(activity: Activity) {
-//        viewModelScope.launch {
-//            mBMIRepo.openPlayMarket(activity)
-//        }
-//    }
+    fun openPlayMarket(activity: Activity) {
+        viewModelScope.launch {
+            mOPenPlayMarketUseCase.execute(activity)
+        }
+    }
 
 
     fun convertToDetails(

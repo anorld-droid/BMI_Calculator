@@ -1,16 +1,18 @@
 package com.anorlddroid.patricemulindi.views
 
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.RatingBar
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -18,9 +20,11 @@ import androidx.navigation.fragment.navArgs
 import com.anorlddroid.patricemulindi.BuildConfig
 import com.anorlddroid.patricemulindi.R
 import com.anorlddroid.patricemulindi.databinding.FragmentResultsBinding
-import com.anorlddroid.patricemulindi.domain.MainActivityObserver
 import com.anorlddroid.patricemulindi.viewmodels.MainViewModel
-import com.google.android.gms.ads.*
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdLoader
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.nativead.NativeAdView
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,7 +33,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ResultsFragment : Fragment() {
 
 
-    private  var _binding: FragmentResultsBinding? = null
+    private var _binding: FragmentResultsBinding? = null
     private val binding get() = _binding!!
     private val args: ResultsFragmentArgs by navArgs()
     private val viewModel: MainViewModel by viewModels()
@@ -43,12 +47,14 @@ class ResultsFragment : Fragment() {
         _binding = FragmentResultsBinding.inflate(inflater, container, false)
         viewModel.calculate(args.userDetails)
         lifecycleScope.launchWhenStarted {
-            viewModel.results.collect{ results -> binding.BMIResultWholeNum.text = results.BMIIndex[0]
-        binding.BMIResultRemNum.text = results.BMIIndex[1]
-        binding.txtVwNameRate.text = String.format(
-            "HELLO ${results.name.uppercase()}, YOU ARE ${results.category.uppercase()}")
-        binding.txtVwBMIInfo.text = results.categoryInfo
-        binding.txtVwPonderalIndex.text = results.PonderalIndex
+            viewModel.results.collect { results ->
+                binding.BMIResultWholeNum.text = results.BMIIndex[0]
+                binding.BMIResultRemNum.text = results.BMIIndex[1]
+                binding.txtVwNameRate.text = String.format(
+                    "HELLO ${results.name.uppercase()}, YOU ARE ${results.category.uppercase()}"
+                )
+                binding.txtVwBMIInfo.text = results.categoryInfo
+                binding.txtVwPonderalIndex.text = results.PonderalIndex
             }
         }
         //TODO Move to viewModel
@@ -69,12 +75,14 @@ class ResultsFragment : Fragment() {
 //        binding.shareBtn.setOnClickListener {
 //            activity?.let { it1 -> viewModel.shareScreenShot(it1, binding.root) }
 //        }
-//        binding.rateBtn.setOnClickListener {
-//            activity?.let { it1 -> viewModel.openPlayMarket(it1) }
-//        }
+        binding.rateBtn.setOnClickListener {
+            activity?.let { activity ->
+                viewModel.openPlayMarket(activity)
+            }
+        }
     }
 
-    private fun loadNativeAd(){
+    private fun loadNativeAd() {
         val adBuilder = AdLoader.Builder(requireContext(), getString(R.string.native_unit_id))
         adBuilder.forNativeAd { nativeAd ->
             // If this callback occurs after the activity is destroyed, you must call
@@ -112,7 +120,8 @@ class ResultsFragment : Fragment() {
         }).build()
         adLoader.loadAd(AdRequest.Builder().build())
     }
-    private fun initializeNativeAdView(adView: NativeAdView){
+
+    private fun initializeNativeAdView(adView: NativeAdView) {
         adView.mediaView = adView.findViewById(R.id.ad_media)
         adView.headlineView = adView.findViewById(R.id.ad_headline)
         adView.bodyView = adView.findViewById(R.id.ad_body)
@@ -123,6 +132,7 @@ class ResultsFragment : Fragment() {
         adView.advertiserView = adView.findViewById(R.id.ad_advertiser)
 
     }
+
     private fun populateNativeAdView(nativeAd: NativeAd, adView: NativeAdView) {
         // The headline and media content are guaranteed to be in every NativeAd.
         (adView.headlineView as TextView).text = nativeAd.headline
@@ -193,6 +203,7 @@ class ResultsFragment : Fragment() {
         currentNativeAd?.destroy()
         super.onDestroy()
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

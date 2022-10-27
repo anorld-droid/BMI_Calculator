@@ -4,6 +4,8 @@ import com.anorlddroid.patricemulindi.repository.BMIRepository
 import com.anorlddroid.patricemulindi.repository.BMIRepositoryImpl
 import com.anorlddroid.patricemulindi.repository.usecase.CalculateBMIUseCase
 import com.anorlddroid.patricemulindi.repository.usecase.CalculateBMIUseCaseImpl
+import com.anorlddroid.patricemulindi.repository.usecase.OPenPlayMarketUseCase
+import com.anorlddroid.patricemulindi.repository.usecase.OPenPlayMarketUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -17,4 +19,6 @@ abstract class AppModule {
     abstract fun provideBMIRepository(mBMIRepo: BMIRepositoryImpl):BMIRepository
     @Binds
     abstract fun provideCalculateBMIUseCase(mBMIUseCase: CalculateBMIUseCaseImpl) : CalculateBMIUseCase
+    @Binds
+    abstract fun provideOPenPlayMarketUseCase(mOPenPlayMarketUseCase: OPenPlayMarketUseCaseImpl) : OPenPlayMarketUseCase
 }
