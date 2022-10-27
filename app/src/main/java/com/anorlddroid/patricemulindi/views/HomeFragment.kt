@@ -1,15 +1,18 @@
 package com.anorlddroid.patricemulindi.views
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.NumberPicker
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 
@@ -30,7 +33,8 @@ import kotlin.properties.Delegates
 class HomeFragment : Fragment() {
 
 
-    private lateinit var binding: FragmentHomeBinding
+    private  var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     private val viewModel by viewModels<MainViewModel>()
     private var mInterstitialAd: InterstitialAd? = null
     private lateinit var adRequest: AdRequest
@@ -43,48 +47,40 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.lifecycle?.addObserver(MainActivityObserver {
-            val toolbar: Toolbar = view.findViewById(R.id.tool_bar);
-            (activity as AppCompatActivity).setSupportActionBar(
-                toolbar
-            )
-            val weightPicker: NumberPicker = binding.numberPickerWeight
-            weightPicker.maxValue = 300
-            weightPicker.minValue = 10
-            weightPicker.value = 43
-            weight = 43
-            weightPicker.setOnValueChangedListener { _, _, newValue ->
-                weight = newValue
-            }
+        val toolbar: Toolbar = view.findViewById(R.id.tool_bar);
+        (activity as AppCompatActivity).setSupportActionBar(
+            toolbar
+        )
+        loadInterstitialAd()
+        populateNumberPickers()
 
-            val heightPicker: NumberPicker = binding.numberPickerHeight
-            heightPicker.maxValue = 300
-            heightPicker.minValue = 10
-            heightPicker.value = 127
-            height = 127
-            heightPicker.setOnValueChangedListener { _, _, newValue ->
-                height = newValue
+        binding.calculateBtn.setOnClickListener {
+            val name = binding.name.text.toString()
+            if (viewModel.verifyInput(name)) { //TODO Implement
+                val details =  viewModel.convertToDetails(
+                        name = name,
+                        weight = weight.toDouble(),
+                        height = height.toDouble(),
+                        gender = gender
+                    )
+                if (mInterstitialAd != null) {
+                    showInterstitialAd(details = details)
+                } else {
+                    navigateToResultFragment(details = details)
+                }
+            }else {
+                Toast.makeText(context, "Enter yout details to proceed", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
 
-            val genderPicker: NumberPicker = binding.numberPickerGender
-            val genderList = arrayOf("Male", "Female")
-            genderPicker.maxValue = 1
-            genderPicker.minValue = 0
-            genderPicker.value = 1
-            gender = genderList[1]
-            genderPicker.displayedValues = genderList
-            genderPicker.setOnValueChangedListener { _, _, newValue ->
-                gender = genderList[newValue]
-            }
-        })
-
-        MobileAds.initialize(requireContext())
+    private fun loadInterstitialAd(){
         adRequest = AdRequest.Builder().build()
         InterstitialAd.load(
             requireContext(),
@@ -95,48 +91,60 @@ class HomeFragment : Fragment() {
                     mInterstitialAd = insterstitialAd
                 }
             })
+    }
 
-        binding.calculateBtn.setOnClickListener {
-            if (verifyInputs()) {
-                val result = viewModel.calculate(
-                    Details(
-                        name = binding.name.text.toString(),
-                        weight = weight.toDouble(),
-                        height = height.toDouble(),
-                        gender = gender
-                    )
-                )
-                if (mInterstitialAd != null) {
-                    mInterstitialAd?.fullScreenContentCallback =
-                        object : FullScreenContentCallback() {
-                            override fun onAdDismissedFullScreenContent() {
-                                super.onAdDismissedFullScreenContent()
-                                val actions =
-                                    HomeFragmentDirections.actionNavigationHomeToNavigationResults(
-                                        result
-                                    )
-                                findNavController().navigate(actions)
-                                mInterstitialAd = null
-                            }
-                        }
-                    mInterstitialAd?.show(requireActivity())
-                } else {
-                    val actions =
-                        HomeFragmentDirections.actionNavigationHomeToNavigationResults(result)
-                    findNavController().navigate(actions)
+    private fun populateNumberPickers(){
+        val weightPicker: NumberPicker = binding.numberPickerWeight
+        weightPicker.maxValue = 300
+        weightPicker.minValue = 10
+        weightPicker.value = 43
+        weight = 43
+        weightPicker.setOnValueChangedListener { _, _, newValue ->
+            weight = newValue
+        }
+
+        val heightPicker: NumberPicker = binding.numberPickerHeight
+        heightPicker.maxValue = 300
+        heightPicker.minValue = 10
+        heightPicker.value = 127
+        height = 127
+        heightPicker.setOnValueChangedListener { _, _, newValue ->
+            height = newValue
+        }
+
+
+        val genderPicker:  NumberPicker = binding.numberPickerGender
+        val genderList = arrayOf("Male", "Female")
+        genderPicker.maxValue = 1
+        genderPicker.minValue = 0
+        genderPicker.value = 1
+        gender = genderList[1]
+        genderPicker.displayedValues = genderList
+        genderPicker.setOnValueChangedListener { _, _, newValue ->
+            gender = genderList[newValue]
+        }
+    }
+    private fun showInterstitialAd(details: Details){
+        mInterstitialAd?.fullScreenContentCallback =
+            object : FullScreenContentCallback() {
+                override fun onAdDismissedFullScreenContent() {
+                    super.onAdDismissedFullScreenContent()
+                   navigateToResultFragment(details = details)
+                    mInterstitialAd = null
                 }
             }
-        }
+        mInterstitialAd?.show(requireActivity())
+    }
+    private fun navigateToResultFragment(details: Details){
+        val actions =
+            HomeFragmentDirections.actionNavigationHomeToNavigationResults(details)
+        findNavController().navigate(actions)
     }
 
-    private fun verifyInputs(): Boolean {
-        if (binding.name.text.toString().isEmpty()) {
-            Toast.makeText(activity, "Enter your personal details to continue", Toast.LENGTH_LONG)
-                .show()
-            return false
-        }
-        return true
-    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }
