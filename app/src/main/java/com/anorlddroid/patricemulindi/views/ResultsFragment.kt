@@ -44,7 +44,7 @@ class ResultsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentResultsBinding.inflate(inflater, container, false)
-        viewModel.calculate(args.userDetails)
+        context?.let { viewModel.calculate(args.userDetails, it) }
         lifecycleScope.launchWhenStarted {
             viewModel.results.collect { results ->
                 binding.BMIResultWholeNum.text = results.BMIIndex[0]

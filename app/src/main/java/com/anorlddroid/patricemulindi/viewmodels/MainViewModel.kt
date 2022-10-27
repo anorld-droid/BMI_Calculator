@@ -1,6 +1,7 @@
 package com.anorlddroid.patricemulindi.viewmodels
 
 import android.app.Activity
+import android.content.Context
 import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -34,9 +35,9 @@ class MainViewModel @Inject constructor(
         get() = _results
 
 
-    fun calculate(details: Details) {
+    fun calculate(details: Details, context: Context) {
         viewModelScope.launch(Dispatchers.IO) {
-            _results.value = mBMIUseCase.execute(details)
+            _results.value = mBMIUseCase.execute(details, context )
         }
     }
 
