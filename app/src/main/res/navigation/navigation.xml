@@ -26,8 +26,8 @@
         android:label="@string/results_fg_title"
         tools:layout="@layout/fragment_results" >
         <argument
-            android:name="results"
-            app:argType="com.anorlddroid.patricemulindi.model.Results" />
+            android:name="userDetails"
+            app:argType="com.anorlddroid.patricemulindi.model.Details" />
         <action
             android:id="@+id/action_navigation_results_to_navigation_home"
             app:destination="@id/navigation_home"
